@@ -1,0 +1,27 @@
+.wrapper {
+	margin-top: 64px;
+}
+
+.plot {
+	margin-top: 32px;
+}
+
+.hint {
+	background-color: #e6e6e6;
+	color: black;
+	border-radius: 8px 8px 8px 8px;
+}
+
+.hintItem {
+	margin: 4px;
+}
+
+.modal {
+	background-color: #fff;
+	margin: 32px;
+}
+
+.header {
+	width: inherit;
+	text-align: left;
+}

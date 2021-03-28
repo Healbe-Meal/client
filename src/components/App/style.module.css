@@ -1,0 +1,54 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	width: 90vw;
+}
+
+.plot {
+	margin-top: 32px;
+}
+
+.loader {
+	margin-top: 32px;
+}
+
+.hint {
+	background-color: #e6e6e6;
+	color: black;
+	border-radius: 8px 8px 8px 8px;
+}
+
+.hintItem {
+	margin: 4px;
+}
+
+.user {
+	margin-left: 25px;
+	text-align: left;
+	width: inherit;
+}
+
+.healbe {
+	color: #8a2bf5;
+	font-weight: bold;
+	font-size: 48pt;
+	text-align: center;
+}
+
+.healbeH2 {
+	font-size: 32pt;
+	text-align: center;
+}
+
+.healbeH3 {
+	font-size: 24pt;
+	color: #585858;
+	text-align: center;
+}
+
+.modal {
+	background-color: #fff;
+	margin: 32px;
+}

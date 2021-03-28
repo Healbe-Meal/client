@@ -1,0 +1,28 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.plot {
+	margin-top: 32px;
+}
+
+.norm {
+	background-color: red;
+}
+
+.hint {
+	background-color: #e6e6e6;
+	color: black;
+	border-radius: 8px 8px 8px 8px;
+}
+
+.hintItem {
+	margin: 4px;
+}
+
+.modal {
+	background-color: #fff;
+	margin: 32px;
+}

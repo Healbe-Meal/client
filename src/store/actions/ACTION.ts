@@ -1,0 +1,7 @@
+enum ACTION {
+	SEND_FILE = "SEND_FILE",
+	START_LOADER = "START_LOADER",
+	STOP_LOADER = "STOP_LOADER"
+}
+
+export default ACTION;
