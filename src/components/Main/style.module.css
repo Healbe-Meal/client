@@ -36,18 +36,15 @@
 }
 
 .fileForm {
-	/* background-color: #34ebbd; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 
 	flex-grow: 1;
-	width: 100vw;
-}
+	width: calc(100vw - 32px);
 
-.box:last-child {
-	margin-right: 0;
+	margin: 16px;
 }
 
 .img {
@@ -78,10 +75,5 @@
 		width: 100vw;
 		height: 100vw;
 		min-height: 600px;
-		margin-right: 0;
-	}
-
-	.fileForm {
-		margin: 32px;
 	}
 }
