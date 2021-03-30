@@ -7,7 +7,7 @@ import app from "../actions/app";
 
 async function send(file: any): Promise<App> {
 	return await axios
-		.post("http://localhost:8100/parse", file, {
+		.post("http://178.176.224.205:22202/parse", file, {
 			headers: { "Content-Type": "multipart/form-data" },
 		})
 		.then((response) => {
