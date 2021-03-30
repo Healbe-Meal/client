@@ -4,19 +4,23 @@ import { Hint, HorizontalGridLines, LineSeries, VerticalGridLines, XAxis, XYPlot
 import Point from "../../types/Point";
 
 type Props = {
-	heartRate: Point[][];
+	heartRate: Point[];
+	norms: number[];
+	daysInMonth: number[];
 };
 
 const HeartRate: React.FC<Props> = (props: Props) => {
 	const [selectedBar, setSelectedBar] = React.useState<any>(null);
 
+	const minNormData = [];
+	const normData = [];
+	for (let i = 1; i < props.daysInMonth.length + 1; i++) {
+		minNormData.push({ x: i, y: props.norms[0] });
+		normData.push({ x: i, y: props.norms[1] });
+	}
+
 	const [isHoveringMinNorm, setHoveringMinNorm] = React.useState(false);
 	const [minNorm, setMinNorm] = React.useState<any>(null);
-
-	const minNormData = [];
-	for (let i = 1; i < 29; i++) {
-		minNormData.push({ x: i, y: 51 });
-	}
 
 	const handleMinNorm = (v: any) => setMinNorm(v);
 	const clearMinNorm = () => setMinNorm(null);
@@ -25,17 +29,11 @@ const HeartRate: React.FC<Props> = (props: Props) => {
 	const [isHoveringNorm, setHoveringNorm] = React.useState(false);
 	const [norm, setNorm] = React.useState<any>(null);
 
-	const normData = [];
-	for (let i = 1; i < 29; i++) {
-		normData.push({ x: i, y: 81 });
-	}
-
 	const handleNorm = (v: any) => setNorm(v);
 	const clearNorm = () => setNorm(null);
 	const handleHoveringNorm = (is: boolean) => setHoveringNorm(is);
 
 	const handleSelectedBar = (v: any) => {
-		v.sum = v.description.reduce((x: number, y: any) => x + y.energyIn);
 		setSelectedBar(v);
 	};
 
@@ -71,9 +69,9 @@ const HeartRate: React.FC<Props> = (props: Props) => {
 
 				<VerticalGridLines />
 				<HorizontalGridLines />
-				<XAxis />
+				<XAxis tickValues={props.daysInMonth} />
 				<YAxis />
-				<LineSeries color="green" data={props.heartRate[2]} onNearestX={handleSelectedBar} />
+				<LineSeries color="green" data={props.heartRate} onNearestX={handleSelectedBar} />
 
 				<LineSeries
 					data={minNormData}

@@ -4,7 +4,8 @@ import Point from "../../types/Point";
 import style from "./style.module.css";
 
 type Props = {
-	steps: Point[][];
+	steps: Point[];
+	daysInMonth: number[];
 };
 
 const Steps: React.FC<Props> = (props: Props) => {
@@ -16,7 +17,12 @@ const Steps: React.FC<Props> = (props: Props) => {
 	return (
 		<div className={style.wrapper}>
 			<h2 className={style.header}>Шаги и дистанция</h2>
-			<XYPlot className={style.plot} height={400} width={window.innerWidth - 200}>
+			<XYPlot
+				className={style.plot}
+				height={400}
+				width={window.innerWidth - 200}
+				margin={{ left: 50, right: 10, top: 10, bottom: 40 }}
+			>
 				{steps ? (
 					<Hint value={steps}>
 						<div className={style.hint}>
@@ -30,12 +36,12 @@ const Steps: React.FC<Props> = (props: Props) => {
 
 				<VerticalGridLines />
 				<HorizontalGridLines />
-				<XAxis />
-				<YAxis width={50} />
+				<XAxis tickValues={props.daysInMonth} />
+				<YAxis />
 				<VerticalBarSeries
-					barWidth={0.5}
+					barWidth={0.3}
 					color="#518ce9"
-					data={props.steps[2]}
+					data={props.steps}
 					onValueMouseOver={handleSteps}
 					onValueMouseOut={clearSteps}
 				/>

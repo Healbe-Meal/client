@@ -3,10 +3,9 @@ import { AnyAction } from "redux";
 import ACTION from "../actions/ACTION";
 import axios from "axios";
 import App from "../../types/App";
+import app from "../actions/app";
 
 async function send(file: any): Promise<App> {
-	console.log(file);
-
 	return await axios
 		.post("http://localhost:8100/parse", file, {
 			headers: { "Content-Type": "multipart/form-data" },
@@ -20,7 +19,11 @@ async function send(file: any): Promise<App> {
 
 function* worker(action: AnyAction) {
 	const data: App = yield call(send, action.payload);
+
 	console.log(data);
+
+	yield put(app.setData(data));
+	yield put(app.stopLoader());
 }
 
 function* watchSendFile() {

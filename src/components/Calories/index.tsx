@@ -14,9 +14,10 @@ import Point from "../../types/Point";
 import style from "./style.module.css";
 
 type Props = {
-	energyIn: Point[][];
-	energyOut: Point[][];
+	energyIn: Point[];
+	energyOut: Point[];
 	energyNorm: number;
+	daysInMonth: number[];
 };
 
 const Calories: React.FC<Props> = (props: Props) => {
@@ -37,13 +38,20 @@ const Calories: React.FC<Props> = (props: Props) => {
 
 	const handleHoveringNorm = (is: boolean) => setHoveringNorm(is);
 
-	const normData = props.energyIn[2].map((p: Point) => ({ x: p.x, y: props.energyNorm }));
+	const normData: Point[] = [];
+	for (let i = 1; i < props.daysInMonth.length + 1; i++) normData.push({ x: i, y: props.energyNorm });
 
 	return (
 		<div>
 			<h2>Энергобаланс</h2>
 			<p>* Суточная потребность пользователя в калориях подсчитана по рекомендациям ВОЗ</p>
-			<XYPlot className={style.plot} height={400} width={window.innerWidth - 200}>
+			<XYPlot
+				className={style.plot}
+				xDomain={[1, 31]}
+				height={400}
+				width={window.innerWidth - 200}
+				margin={{ left: 50, right: 10, top: 10, bottom: 40 }}
+			>
 				<DiscreteColorLegend
 					orientation="horizontal"
 					items={[
@@ -61,6 +69,7 @@ const Calories: React.FC<Props> = (props: Props) => {
 				{burntCals && (
 					<Hint value={burntCals}>
 						<div className={style.hint}>
+							<div>День: {burntCals.x}</div>
 							<div className={style.hintItem}>Потрачено: {burntCals.y} Ккал</div>
 						</div>
 					</Hint>
@@ -84,20 +93,20 @@ const Calories: React.FC<Props> = (props: Props) => {
 
 				<VerticalGridLines />
 				<HorizontalGridLines />
-				<XAxis />
-				<YAxis width={50} />
+				<XAxis tickValues={props.daysInMonth} />
+				<YAxis />
 
 				<VerticalBarSeries
 					barWidth={0.7}
 					color="#518ce9"
-					data={props.energyIn[2]}
+					data={props.energyIn}
 					onValueMouseOver={handleCals}
 					onValueMouseOut={clearCals}
 				/>
 				<VerticalBarSeries
 					barWidth={0.7}
 					color="#f2b658"
-					data={props.energyOut[2]}
+					data={props.energyOut}
 					onValueMouseOver={handleBurntCals}
 					onValueMouseOut={clearBurntCals}
 				/>

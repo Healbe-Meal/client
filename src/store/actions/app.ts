@@ -8,6 +8,13 @@ function sendFile(file: any): AnyAction {
 	};
 }
 
+function setData(data: any): AnyAction {
+	return {
+		type: ACTION.SET_DATA,
+		payload: data,
+	};
+}
+
 function startLoader(): AnyAction {
 	return {
 		type: ACTION.START_LOADER,
@@ -20,4 +27,4 @@ function stopLoader(): AnyAction {
 	};
 }
 
-export default { sendFile, startLoader, stopLoader };
+export default { sendFile, startLoader, stopLoader, setData };

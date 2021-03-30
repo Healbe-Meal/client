@@ -6,10 +6,10 @@ import app from "../../store/actions/app";
 
 function mapStateToProps(state: CombinedState<{ app: App }>) {
 	return {
-		month: state.app.month!,
-		user: state.app.user!,
-		didGet: state.app.didGet,
-		isLoader: state.app.isLoader,
+		energyIn: state.app.energyIn,
+		energyOut: state.app.energyOut,
+		energyNorm: state.app.norms.calories,
+		daysInMonth: state.app.daysInMonth,
 	};
 }
 
