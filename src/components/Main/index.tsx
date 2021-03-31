@@ -21,6 +21,11 @@ const Main: React.FC = () => {
 		return () => clearInterval(interval);
 	});
 
+	const nextSlide = () => {
+		setPage((page + 1) % slides.length);
+		setSlide(slides[page]);
+	};
+
 	return (
 		<div className={style.wrapper}>
 			<div className={style.infoWrapper}>
@@ -33,7 +38,7 @@ const Main: React.FC = () => {
 				</div>
 
 				<div className={style.box + " " + style.box2}>
-					<img src={slide} className={style.img} />
+					<img src={slide} className={style.img} onClick={nextSlide} />
 				</div>
 			</div>
 
