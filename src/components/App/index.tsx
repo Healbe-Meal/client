@@ -56,9 +56,7 @@ const App = (props: Props) => {
 						{props.didGet ? (
 							<>
 								<div className={style.user}>
-									<h1>
-										{props.month.name} {props.month.year}
-									</h1>
+									<h1>{props.month.name} 2021</h1>
 									<h2>Данные пользователя</h2>
 									<div>Возраст: {props.user.age}</div>
 									<div>Пол: {props.user.sex ? "Женский" : "Мужской"}</div>
