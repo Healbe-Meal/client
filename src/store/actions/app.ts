@@ -1,4 +1,5 @@
 import { AnyAction } from "redux";
+import Alert from "../../types/Alert";
 import ACTION from "./ACTION";
 
 function sendFile(file: any): AnyAction {
@@ -27,4 +28,17 @@ function stopLoader(): AnyAction {
 	};
 }
 
-export default { sendFile, startLoader, stopLoader, setData };
+function setAlert(alert: Alert): AnyAction {
+	return {
+		type: ACTION.SET_ALERT,
+		payload: alert,
+	};
+}
+
+function cleanAlert(): AnyAction {
+	return {
+		type: ACTION.CLEAN_ALERT,
+	};
+}
+
+export default { sendFile, startLoader, stopLoader, setData, setAlert, cleanAlert };

@@ -1,9 +1,13 @@
+import Alert from "./Alert";
 import Month from "./Month";
 import Norms from "./Norms";
 import Point from "./Point";
 import User from "./User";
 
 type App = {
+	alert: Alert;
+	isAlert: boolean;
+
 	energyIn: Point[];
 	energyOut: Point[];
 	heartRate: Point[];

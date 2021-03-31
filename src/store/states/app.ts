@@ -1,6 +1,12 @@
 import App from "../../types/App";
 
 const app: App = {
+	isAlert: false,
+	alert: {
+		title: "",
+		message: "",
+	},
+
 	energyIn: [],
 	energyOut: [],
 	heartRate: [],

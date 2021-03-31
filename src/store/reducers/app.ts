@@ -63,6 +63,18 @@ function app(state: App = initialState, action: AnyAction): App {
 				...state,
 				isLoader: false,
 			};
+
+		case ACTION.SET_ALERT:
+			return {
+				...state,
+				isAlert: true,
+				alert: action.payload,
+			};
+		case ACTION.CLEAN_ALERT:
+			return {
+				...state,
+				isAlert: false,
+			};
 	}
 	return state;
 }

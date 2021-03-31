@@ -12,8 +12,16 @@ import Main from "../Main";
 import Footer from "../Footer";
 import Header from "../Header";
 import Month from "../../types/Month";
+import Collapse from "@material-ui/core/Collapse";
+import Alert from "@material-ui/lab/Alert";
+import AlertTitle from "@material-ui/lab/AlertTitle";
+import AlertT from "../../types/Alert";
 
 type Props = {
+	alert: AlertT;
+	isAlert: boolean;
+	cleanAlert: () => void;
+
 	month: Month;
 	user: User;
 	didGet: boolean;
@@ -22,6 +30,16 @@ type Props = {
 };
 
 const App = (props: Props) => {
+	React.useEffect(() => {
+		if (props.isAlert) {
+			const timeout = setTimeout(() => {
+				props.cleanAlert();
+			}, 3000);
+
+			return () => clearTimeout(timeout);
+		}
+	}, [props, props.isAlert]);
+
 	return (
 		<div className={style.wrapper}>
 			<Header />
@@ -57,6 +75,15 @@ const App = (props: Props) => {
 						)}
 					</>
 				)}
+			</div>
+
+			<div className={style.alert_wrapper}>
+				<Collapse in={props.isAlert}>
+					<Alert severity={props.alert.severity}>
+						{props.alert.title ? <AlertTitle>{props.alert.title}</AlertTitle> : <></>}
+						{props.alert.message}
+					</Alert>
+				</Collapse>
 			</div>
 
 			<Footer />

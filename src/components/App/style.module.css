@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 }
 
 .plot {
@@ -9,7 +10,11 @@
 }
 
 .loader {
-	margin-top: 32px;
+	margin-top: 16px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .user {
@@ -17,14 +22,16 @@
 	width: inherit;
 }
 
-.healbe {
-	color: #8a2bf5;
-	font-weight: bold;
-	font-size: 48pt;
-	text-align: center;
-}
+.alert_wrapper {
+	/* position: absolute; */
+	bottom: 96px;
 
-.modal {
-	background-color: #fff;
-	margin: 32px;
+	z-index: 10;
+	width: 100vw;
+	height: 100px;
+
+	display: flex;
+	flex-direction: row;
+	align-self: center;
+	justify-content: center;
 }
