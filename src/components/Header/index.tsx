@@ -9,7 +9,7 @@ const Header = () => {
 		<AppBar className={style.wrapper} position="static" color="inherit" elevation={0}>
 			<Toolbar>
 				<Typography className={style.title} variant="h5" noWrap>
-					Healbe MeaL
+					Healthy Meal
 				</Typography>
 			</Toolbar>
 		</AppBar>

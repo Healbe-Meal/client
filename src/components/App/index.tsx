@@ -84,7 +84,7 @@ const App = (props: Props) => {
 				</Collapse>
 			</div>
 
-			<Footer />
+			{/* <Footer /> */}
 		</div>
 	);
 };
